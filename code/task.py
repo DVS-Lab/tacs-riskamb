@@ -200,6 +200,15 @@ class RiskAmbiguityTask:
             feedback_label = "feedback_miss" if not response.responded else f"feedback_{outcome_type}"
             self.marker.send(feedback_label, f"trial={trial['trial_number']};outcome={outcome_type}")
         self.renderer.draw_feedback(trial, response.choice, response.responded)
+        if (
+            self.config["task"].get("display_cumulative_total", False)
+            and self.config["task"].get("payoff_mode") == "cumulative"
+        ):
+            self.renderer.text(
+                f"Running total: ${self.cumulative_total:.2f}",
+                (self.renderer.width // 2, int(self.renderer.height * 0.78)),
+                self.renderer.font_small,
+            )
         pygame.display.flip()
         dropped |= self._wait_ms(float(timing["feedback"]))
 
@@ -403,4 +412,3 @@ class RiskAmbiguityTask:
 
     def close(self) -> None:
         self.marker.close()
-

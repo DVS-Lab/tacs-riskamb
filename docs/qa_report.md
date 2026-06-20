@@ -2,6 +2,8 @@
 
 Date: 2026-06-20
 
+Final automated result: **19 tests passed**. Separate accelerated 80-trial runs completed with 80 durable rows in both windowed and fullscreen code paths.
+
 ## Automated scope
 
 - Design balance and all order constraints across 1,000 seeds.
