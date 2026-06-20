@@ -46,7 +46,7 @@ python code/main.py --subject 001 --session 1 --run 1 --seed 12345
 
 If any identifier is missing, an experimenter-only Pygame setup screen collects subject, session, run, display, fullscreen, trigger mode, and test mode before the participant receives the display. CLI identifiers accept optional `sub-`/`ses-` prefixes and are validated.
 
-The first run presents multi-page instructions, a comprehension check, and four practice trials using cues, amounts, and probabilities that never appear experimentally. Incorrect comprehension responses cause the relevant instruction page to reappear. Later runs use a short reminder. The post-run phase includes cue belief estimates (0–100%), confidence (1–9), and, when enabled, the standard 20-item PANAS “right now” questionnaire.
+The first run presents multi-page instructions, a comprehension check, and four practice trials using cues, amounts, and probabilities that never appear experimentally. An incorrect comprehension response produces an explicit correction and then retries that question. Later runs use a short reminder. The post-run phase includes cue belief estimates (0–100%), confidence (1–9), and, when enabled, the standard 20-item PANAS “right now” questionnaire.
 
 ### Development automation
 

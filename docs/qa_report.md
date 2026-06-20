@@ -2,7 +2,7 @@
 
 Date: 2026-06-20
 
-Final automated result: **19 tests passed**. Separate accelerated 80-trial runs completed with 80 durable rows in both windowed and fullscreen code paths.
+Final automated result: **21 tests passed**. Separate accelerated 80-trial runs completed with 80 durable rows in both windowed and fullscreen code paths.
 
 ## Automated scope
 
@@ -31,3 +31,7 @@ The screenshot utility uses the production `StimulusRenderer`. Review confirmed:
 - Confirm scanner/button-box key codes and LSL stream discovery on the acquisition computer.
 - Measure real display flip timing and dropped-frame rate on study hardware.
 - Pilot comprehension, learning, fatigue, PANAS placement, and bonus wording with the approved protocol.
+
+## Tester-feedback regression
+
+Following tester feedback, incorrect comprehension answers now display an explicit explanation before retrying the same question. The safe-option correction states that `GUARANTEED $0` always pays exactly $0 and distinguishes counterfactual lottery feedback from the chosen outcome. Main-row and numeric-keypad responses are both accepted.

@@ -49,19 +49,19 @@ COMPREHENSION = [
         "question": "Which keys choose the left and right options?",
         "answers": ["F and J", "G and H", "Arrow keys"],
         "correct": 0,
-        "review_page": 0,
+        "correction": "Use F for the left option and J for the right option.",
     },
     {
         "question": "What does the gray ? mask mean?",
         "answers": ["The probability is hidden", "The amounts are unknown", "The trial does not count"],
         "correct": 0,
-        "review_page": 1,
+        "correction": "The gray ? hides only the probability. The gain and loss amounts remain visible.",
     },
     {
-        "question": "What does the guaranteed option pay?",
+        "question": "If you choose the option labeled GUARANTEED $0, what does it pay?",
         "answers": ["Exactly $0", "A hidden amount", "The lottery average"],
         "correct": 0,
-        "review_page": 0,
+        "correction": "The guaranteed option always pays exactly $0. The lottery outcome is shown for learning, but it affects earnings only when the lottery is chosen.",
     },
 ]
 
@@ -121,19 +121,29 @@ def _ask_question(renderer: StimulusRenderer, item: Mapping[str, Any], auto_resp
     renderer.text(str(item["question"]), (renderer.width // 2, int(renderer.height * 0.34)), renderer.font_medium)
     for index, answer in enumerate(item["answers"], start=1):
         renderer.text(f"{index}. {answer}", (renderer.width // 2, int(renderer.height * (0.47 + 0.10 * index))), renderer.font_small)
+    renderer.text("Press 1, 2, or 3", (renderer.width // 2, int(renderer.height * 0.91)), renderer.font_small, renderer.highlight)
     pygame.display.flip()
     clock = pygame.time.Clock()
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                 return None
-            if event.type == pygame.KEYDOWN and pygame.K_1 <= event.key <= pygame.K_3:
-                return event.key - pygame.K_1
+            if event.type == pygame.KEYDOWN:
+                number_keys = {
+                    pygame.K_1: 0,
+                    pygame.K_2: 1,
+                    pygame.K_3: 2,
+                    pygame.K_KP1: 0,
+                    pygame.K_KP2: 1,
+                    pygame.K_KP3: 2,
+                }
+                if event.key in number_keys:
+                    return number_keys[event.key]
         clock.tick(60)
 
 
 def comprehension_check(renderer: StimulusRenderer, auto_respond: bool = False) -> Optional[Dict[str, Any]]:
-    """Require all answers; review the relevant page after each error."""
+    """Require all answers; explain each error before retrying the question."""
     attempts = 0
     errors = 0
     for item in COMPREHENSION:
@@ -145,7 +155,11 @@ def comprehension_check(renderer: StimulusRenderer, auto_respond: bool = False) 
             if response == item["correct"]:
                 break
             errors += 1
-            _draw_lines(renderer, INSTRUCTION_PAGES[int(item["review_page"])], "Review this page, then press SPACE")
+            _draw_lines(
+                renderer,
+                ["Incorrect", str(item["correction"]), "Please try the question again."],
+                "Press SPACE to retry",
+            )
             if _wait_for_navigation(auto_respond) == "abort":
                 return None
     return {"passed": True, "attempts": attempts, "errors": errors}
