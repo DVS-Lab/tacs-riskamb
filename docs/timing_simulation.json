@@ -1,0 +1,22 @@
+{
+  "trials": 80,
+  "choice_deadline_ms": 2500,
+  "buffer_included": true,
+  "profiles": {
+    "fast_younger_adult": {
+      "median_minutes": 4.912767784376819,
+      "p90_minutes": 4.953770126056084,
+      "start_buffer_seconds_included": 5.0
+    },
+    "typical_younger_adult": {
+      "median_minutes": 5.265364517891962,
+      "p90_minutes": 5.319984660890471,
+      "start_buffer_seconds_included": 5.0
+    },
+    "slower_responder": {
+      "median_minutes": 5.70407652388633,
+      "p90_minutes": 5.790197985929706,
+      "start_buffer_seconds_included": 5.0
+    }
+  }
+}
