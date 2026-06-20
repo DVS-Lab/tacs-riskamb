@@ -1,0 +1,106 @@
+{
+  "task": {
+    "version": "0.1.0",
+    "name": "riskambiguity",
+    "trials": 80,
+    "mini_block_size": 8,
+    "payoff_mode": "random_trial",
+    "counterfactual_feedback": true,
+    "display_cumulative_total": false,
+    "belief_probe_enabled": true,
+    "panas_enabled": true,
+    "practice_enabled": true,
+    "comprehension_check_enabled": true,
+    "start_buffer_enabled": true,
+    "auto_response_rt_ms": [450, 1000]
+  },
+  "gambles": {
+    "symmetric": {
+      "p_gain": 0.50,
+      "gain_amount": 3.05,
+      "loss_amount": -3.05
+    },
+    "positive_skew": {
+      "p_gain": 0.25,
+      "gain_amount": 5.25,
+      "loss_amount": -1.75
+    },
+    "practice_symmetric": {
+      "p_gain": 0.60,
+      "gain_amount": 2.00,
+      "loss_amount": -2.00
+    },
+    "practice_skewed": {
+      "p_gain": 0.30,
+      "gain_amount": 4.00,
+      "loss_amount": -1.00
+    },
+    "safe_amount": 0.0
+  },
+  "timing_ms": {
+    "fixation": [400, 700],
+    "choice_deadline": 2500,
+    "selection_highlight": 250,
+    "pre_feedback": [400, 600],
+    "feedback": 1000,
+    "iti": [600, 900],
+    "start_buffer": 5000,
+    "frame_rate": 60
+  },
+  "responses": {
+    "left_key": "f",
+    "right_key": "j",
+    "button_box_left_key": "1",
+    "button_box_right_key": "2",
+    "scanner_trigger_key": "5",
+    "allow_button_box": true
+  },
+  "display": {
+    "width": 1280,
+    "height": 800,
+    "fullscreen": true,
+    "display_index": 0,
+    "background": [18, 21, 29],
+    "foreground": [242, 244, 248],
+    "gain_color": [54, 183, 126],
+    "loss_color": [219, 88, 96],
+    "mask_color": [119, 124, 135],
+    "highlight_color": [255, 214, 87]
+  },
+  "cue_library": [
+    {"id": "cue_A", "color_name": "blue", "color": [66, 135, 245], "shape": "circle"},
+    {"id": "cue_B", "color_name": "orange", "color": [242, 143, 45], "shape": "octagon"},
+    {"id": "cue_C", "color_name": "violet", "color": [156, 102, 235], "shape": "diamond"},
+    {"id": "cue_D", "color_name": "teal", "color": [38, 176, 178], "shape": "hexagon"},
+    {"id": "cue_E", "color_name": "rose", "color": [225, 91, 139], "shape": "triangle"},
+    {"id": "cue_F", "color_name": "gold", "color": [225, 181, 46], "shape": "square"},
+    {"id": "cue_G", "color_name": "cyan", "color": [44, 181, 219], "shape": "pentagon"},
+    {"id": "cue_H", "color_name": "coral", "color": [231, 112, 80], "shape": "star"}
+  ],
+  "triggers": {
+    "start_mode": "space",
+    "lsl_enabled": false,
+    "lsl_stream_name": "RiskAmbiguityMarkers",
+    "lsl_start_marker": 203,
+    "marker_map": {
+      "run_start": 100,
+      "trial_start": 10,
+      "symmetric_risk_onset": 11,
+      "symmetric_hidden_probability_onset": 12,
+      "positive_skew_risk_onset": 13,
+      "positive_skew_hidden_probability_onset": 14,
+      "response": 20,
+      "gamble_selected": 21,
+      "safe_selected": 22,
+      "feedback_gain": 31,
+      "feedback_loss": 32,
+      "feedback_miss": 33,
+      "run_end": 200
+    }
+  },
+  "paths": {
+    "data_dir": "data",
+    "log_dir": "logs"
+  }
+}
+

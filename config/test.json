@@ -1,0 +1,28 @@
+{
+  "extends": "default.json",
+  "task": {
+    "trials": 8,
+    "belief_probe_enabled": false,
+    "panas_enabled": false,
+    "practice_enabled": false,
+    "comprehension_check_enabled": false,
+    "start_buffer_enabled": false,
+    "auto_response_rt_ms": [1, 3]
+  },
+  "timing_ms": {
+    "fixation": [1, 2],
+    "choice_deadline": 20,
+    "selection_highlight": 1,
+    "pre_feedback": [1, 2],
+    "feedback": 1,
+    "iti": [1, 2],
+    "start_buffer": 1,
+    "frame_rate": 240
+  },
+  "display": {
+    "width": 960,
+    "height": 600,
+    "fullscreen": false
+  }
+}
+
